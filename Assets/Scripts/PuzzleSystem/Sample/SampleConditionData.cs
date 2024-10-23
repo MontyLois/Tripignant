@@ -1,7 +1,7 @@
 ﻿using PuzzleSystem.Core.Data;
 using UnityEngine;
 
-namespace PuzzleSystem.Sample
+namespace PuzzleSystem.Sample.PuzzleSystem.Sample
 {
     [CreateAssetMenu(menuName = "PuzzleSystem/Sample/ConditionData")]
     public class SampleConditionData : ConditionData

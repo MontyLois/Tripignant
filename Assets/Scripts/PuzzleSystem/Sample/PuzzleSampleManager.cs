@@ -1,3 +1,4 @@
+            PuzzleManager.Instance.StartPuzzle(puzzle);
 using System;
 using System.Collections;
 using System.Collections.Generic;

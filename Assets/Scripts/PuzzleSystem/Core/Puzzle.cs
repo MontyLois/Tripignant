@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using PuzzleSystem.Core.Data;
 using UnityEngine;
 
-namespace PuzzleSystem.Core
+namespace PuzzleSystem.Core.PuzzleSystem.Core
 {
     public class Puzzle
     {

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using LTX.Singletons;
 using LTX.Tools;
 using PuzzleSystem.Core.Data;
 
-namespace PuzzleSystem.Core
+namespace PuzzleSystem.Core.PuzzleSystem.Core
 {
     public class PuzzleManager : MonoSingleton<PuzzleManager>
     {
@@ -54,4 +54,6 @@ namespace PuzzleSystem.Core
         }
 
     }
+
+    
 }
