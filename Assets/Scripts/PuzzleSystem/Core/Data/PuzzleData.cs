@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PuzzleSystem.Core.PuzzleSystem.Core;
+using UnityEngine;
 
 namespace PuzzleSystem.Core.Data
 {

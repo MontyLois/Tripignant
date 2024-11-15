@@ -1,6 +1,6 @@
 {
-    "name": "NomDuJeu.Core",
-    "rootNamespace": "NomDuJeu.Core",
+    "name": "Calico.Core",
+    "rootNamespace": "Calico.Core",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
