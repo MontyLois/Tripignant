@@ -1,7 +1,6 @@
-namespace PuzzleSystem.Core.Interfaces
+﻿namespace PuzzleSystem.Core.Interfaces
 {
     public interface IPuzzle
     {
-        
     }
 }

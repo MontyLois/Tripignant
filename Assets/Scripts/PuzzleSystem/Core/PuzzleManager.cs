@@ -1,59 +1,81 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using LTX.Singletons;
 using LTX.Tools;
-using PuzzleSystem.Core.Data;
+using PuzzleSystem.Core.Interfaces;
+using UnityEngine;
 
-namespace PuzzleSystem.Core.PuzzleSystem.Core
+namespace PuzzleSystem.Core
 {
     public class PuzzleManager : MonoSingleton<PuzzleManager>
     {
-        public event Action<Puzzle> OnPuzzleStarted;
-        public event Action<Puzzle> OnPuzzleStopped;
+        public event Action<IPuzzleRunner> OnPuzzleStarted;
+        public event Action<IPuzzleRunner> OnPuzzleStopped;
 
-        private List<Puzzle> puzzles;
-        private DynamicBuffer<Puzzle> puzzlesBuffer;
+        private List<IPuzzleRunner> puzzleRunners;
+        private DynamicBuffer<IPuzzleRunner> puzzleRunnersBuffer;
 
         protected override void Awake()
         {
             base.Awake();
 
-            puzzles = new List<Puzzle>();
-            puzzlesBuffer = new DynamicBuffer<Puzzle>(64);
+            puzzleRunners = new List<IPuzzleRunner>();
+            puzzleRunnersBuffer = new DynamicBuffer<IPuzzleRunner>(64);
         }
 
         private void Update()
         {
-            puzzlesBuffer.CopyFrom(puzzles);
+            puzzleRunnersBuffer.CopyFrom(puzzleRunners);
 
-            for (int i = 0; i < puzzlesBuffer.Length; i++)
+            for (int i = 0; i < puzzleRunnersBuffer.Length; i++)
             {
                 //If done, then stop the puzzle
-                if(puzzlesBuffer[i].Refresh())
-                    StopPuzzle(puzzlesBuffer[i], true);
+                if(puzzleRunnersBuffer[i].Refresh())
+                    StopPuzzle(puzzleRunnersBuffer[i].Puzzle, true);
             }
         }
 
-        public void StartPuzzle(Puzzle puzzle)
+        public void StartPuzzle<T>(Puzzle<T> puzzle, IPuzzleHandler<T> puzzleHandler) where T : IPuzzleContext
         {
-            if(puzzles.Contains(puzzle))
+            //On ne recommence pas les puzzles
+            if(TryGetPuzzleRunner(puzzle, out IPuzzleRunner runner))
                 return;
 
-            puzzle.puzzleData.Begin();
+            PuzzleRunner<T> puzzleRunner = new PuzzleRunner<T>(puzzle, puzzleHandler);
 
-            puzzles.Add(puzzle);
-            OnPuzzleStarted?.Invoke(puzzle);
+            puzzleRunners.Add(puzzleRunner);
+            puzzleRunner.Begin();
+
+            OnPuzzleStarted?.Invoke(puzzleRunner);
         }
 
-        public void StopPuzzle(Puzzle puzzle, bool isSuccess = false)
+        public void StopPuzzle(IPuzzle puzzle, bool isSuccess = false)
         {
-            puzzle.puzzleData.End(isSuccess);
+            if (TryGetPuzzleRunner(puzzle, out IPuzzleRunner runner))
+            {
+                runner.End(isSuccess);
+                puzzleRunners.Remove(runner);
 
-            if(puzzles.Remove(puzzle))
-                OnPuzzleStopped?.Invoke(puzzle);
+                OnPuzzleStopped?.Invoke(runner);
+            }
         }
 
-    }
 
-    
+        private bool TryGetPuzzleRunner(IPuzzle puzzle, out IPuzzleRunner puzzleRunner)
+        {
+            foreach (IPuzzleRunner runner in puzzleRunners)
+            {
+                if (runner.Puzzle == puzzle)
+                {
+                    //Match trouvé
+                    puzzleRunner = runner;
+                    return true;
+                }
+            }
+
+            //On a rien trouvé
+            puzzleRunner = null;
+            return false;
+        }
+    }
 }

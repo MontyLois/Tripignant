@@ -1,6 +1,6 @@
 {
-    "name": "NomDuJeu.Editor",
-    "rootNamespace": "NomDuJeu.Editor",
+    "name": "Calico.Editor",
+    "rootNamespace": "Calico.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"

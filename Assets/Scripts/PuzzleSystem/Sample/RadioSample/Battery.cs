@@ -1,6 +1,8 @@
+﻿using UnityEngine;
+
 namespace PuzzleSystem.Sample.RadioSample
 {
-    public class PlayerExemple
+    public class Battery : MonoBehaviour
     {
         
     }

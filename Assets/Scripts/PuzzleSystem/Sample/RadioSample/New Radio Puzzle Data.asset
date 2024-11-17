@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ced1c232af5474fb292ec416c3acdb6, type: 3}
-  m_Name: New Sample Puzzle Data
+  m_Script: {fileID: 11500000, guid: c10c16e56e13d8e45a306b838085c681, type: 3}
+  m_Name: New Radio Puzzle Data
   m_EditorClassIdentifier: 
-  <PuzzleName>k__BackingField: Test 1
-  <Conditions>k__BackingField:
-  - {fileID: 11400000, guid: 7400d92fd9c59c34299cef075506a141, type: 2}
-  <KeyCode>k__BackingField: 9
+  <PuzzleName>k__BackingField: 
+  successSound: {fileID: 8300000, guid: ebf4609aed0dc4d82ad954bb603461fd, type: 3}

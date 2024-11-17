@@ -1,7 +1,7 @@
-namespace PuzzleSystem.Core.PuzzleSystem.Core.Interfaces
+﻿namespace PuzzleSystem.Core.Interfaces
 {
-    public interface IPuzzleHandler
+    public interface IPuzzleHandler<T> where T : IPuzzleContext
     {
-        
+        T GetContext();
     }
 }

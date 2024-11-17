@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec1750d974571c46b14d7ea4b955a38, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
-  <MouseSensitivity>k__BackingField: 0
-  <Avatar>k__BackingField: {fileID: 0}
+  <MouseXSensitivity>k__BackingField: 400
+  <MouseYSensitivity>k__BackingField: 400
+  <playerHeight>k__BackingField: 0
+  <Avatar>k__BackingField: {fileID: 6371020224050777900, guid: 367b068f147e185409b857053ed49a45, type: 3}

@@ -1,11 +1,13 @@
 ﻿using System;
 using LTX.Singletons;
 using PuzzleSystem.Core;
+using PuzzleSystem.Core.Interfaces;
+using PuzzleSystem.Core.Interfaces;
 using UnityEngine;
 
 namespace PuzzleSystem.Sample.RadioSample
 {
-    public class RadioSetup : MonoSingleton<RadioSetup>
+    public class RadioPuzzleHandler : MonoBehaviour, IPuzzleHandler<RadioContext>
     {
         [SerializeField]
         public Radio radio;
@@ -14,26 +16,28 @@ namespace PuzzleSystem.Sample.RadioSample
         [SerializeField]
         public PlayerExample player;
 
-        
+        [SerializeField]
+        public AudioClip clip;
 
-        private Puzzle puzzle;
+        private RadioPuzzle puzzle;
 
         /// <summary>
         /// Creation puzzle
         /// </summary>
         private void Start()
         {
-            puzzle = new Puzzle(puzzleData);
+            puzzle = new RadioPuzzle(clip);
 
-            PuzzleManager.Instance.StartPuzzle(puzzle);
+            PuzzleManager.Instance.StartPuzzle(puzzle, this);
         }
 
-        /// <summary>
-        /// Quelque chose a changé
-        /// </summary>
-        public void SetDirty()
+        public RadioContext GetContext()
         {
-            puzzle.SetDirty();
+            return new RadioContext()
+            {
+                battery = battery,
+                radio = radio,
+            };
         }
     }
 }

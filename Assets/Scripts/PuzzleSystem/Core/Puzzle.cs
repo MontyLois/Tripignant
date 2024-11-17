@@ -1,52 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using PuzzleSystem.Core.Data;
+using PuzzleSystem.Core.Interfaces;
 using UnityEngine;
 
-namespace PuzzleSystem.Core.PuzzleSystem.Core
+namespace PuzzleSystem.Core
 {
-    public class Puzzle
+    public abstract class Puzzle<T> : IPuzzle
+        where T : IPuzzleContext
     {
         /// <summary>
-        /// Has the object changed
+        /// Begins puzzle
         /// </summary>
-        public bool IsDirty { get; private set; }
-
-        //Readonly => can only be assigned in constructor
-        public readonly PuzzleData puzzleData;
-
-        public Puzzle(PuzzleData puzzleData)
-        {
-            this.puzzleData = puzzleData;
-            IsDirty = true;
-        }
-
+        /// <param name="context"></param>
+        public abstract void Begin(ref T context);
 
         /// <summary>
         /// Update from the manager
         /// </summary>
-        public bool Refresh()
-        {
-            //If nothing has changed, return
-            if(!IsDirty)
-                return false;
-
-            //Only one refresh
-            IsDirty = false;
-
-            if (!puzzleData.Refresh())
-                return false;
-
-            //Done
-            return true;
-        }
+        public abstract bool Refresh(ref T context);
 
         /// <summary>
-        /// Signal something has changed
+        /// Ends puzzle
         /// </summary>
-        public void SetDirty()
-        {
-            IsDirty = true;
-        }
+        /// <param name="context"></param>
+        /// <param name="isSuccess"></param>
+        public abstract void End(ref T context, bool isSuccess);
     }
 }

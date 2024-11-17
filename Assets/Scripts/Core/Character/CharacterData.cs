@@ -13,6 +13,9 @@ namespace Calico.Core
         public int MouseYSensitivity { get; private set; }
         
         [field: SerializeField]
+        public float playerHeight { get; private set; }
+        
+        [field: SerializeField]
         public GameObject Avatar { get; private set; }
     }
 }
