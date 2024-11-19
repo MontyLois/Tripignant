@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9126306682970607969}
   - component: {fileID: 5448266315860379597}
-  - component: {fileID: 6469878480870249970}
-  - component: {fileID: 4182551320346114855}
   m_Layer: 0
   m_Name: Polaroid_Camera
   m_TagString: Untagged
@@ -85,28 +83,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6469878480870249970
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071033711690273556}
-  m_Enabled: 1
---- !u!114 &4182551320346114855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071033711690273556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5c3e87b2ae47d49805d9c6e61747fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  polaroidCamera: {fileID: 5448266315860379597}
-  renderTexture: {fileID: 8400000, guid: be2bbaf157407694a8accd009116e13b, type: 2}
-  heighDistance: 40
-  cameraPosition: {fileID: 9126306682970607969}
-  playercameraPostion: {fileID: 0}

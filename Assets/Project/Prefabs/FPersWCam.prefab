@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7509580897421252429}
   m_Father: {fileID: 4558596585409819013}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!20 &9088305338029668752
@@ -284,6 +285,37 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 6720355996786945040}
+--- !u!1 &1666177164610777536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7509580897421252429}
+  m_Layer: 0
+  m_Name: PolaroidPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7509580897421252429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666177164610777536}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.359, y: -0.31799996, z: 0.6750002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3031159063411949253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1704290125392804281
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +329,9 @@ GameObject:
   - component: {fileID: 6922390398857569059}
   - component: {fileID: 5315909708063904633}
   - component: {fileID: 424272532748093946}
-  - component: {fileID: 358452163512768874}
+  - component: {fileID: 3856308905188858770}
+  - component: {fileID: 2124255714326840635}
+  - component: {fileID: 4357029197615512943}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -437,8 +471,8 @@ MonoBehaviour:
   _brakingDecelerationFalling: 0
   _fallingLateralFriction: 0.3
   _airControl: 0.3
-  _canEverJump: 1
-  _canJumpWhileCrouching: 1
+  _canEverJump: 0
+  _canJumpWhileCrouching: 0
   _jumpMaxCount: 1
   _jumpImpulse: 5
   _jumpMaxHoldTime: 0
@@ -464,7 +498,7 @@ MonoBehaviour:
   _pushForceScale: 1
   _standingDownwardForceScale: 1
   _camera: {fileID: 9088305338029668752}
---- !u!114 &358452163512768874
+--- !u!114 &3856308905188858770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -473,7 +507,172 @@ MonoBehaviour:
   m_GameObject: {fileID: 1704290125392804281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73967082b28b4a9996507023b6a008f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: df51a1df743e1274dace65928cc47e3b, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2124255714326840635}
+        m_TargetAssemblyTypeName: CharacterInput, CharacterSystem.Game
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4357029197615512943}
+        m_TargetAssemblyTypeName: CharacterSystem.Game.CharacterSystem.CharacterInteraction,
+          CharacterSystem.Game
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0d2b35a8-7cdb-4bc8-b18d-84d5f6286fef
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2124255714326840635}
+        m_TargetAssemblyTypeName: CharacterInput, CharacterSystem.Game
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5b928c04-cb6a-4385-ac05-b6ad03d6b7f1
+    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4357029197615512943}
+        m_TargetAssemblyTypeName: CharacterSystem.Game.CharacterSystem.CharacterInteraction,
+          CharacterSystem.Game
+        m_MethodName: OnUseItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5c9d7157-4f54-4ea4-9d65-eb173b1beab4
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4357029197615512943}
+        m_TargetAssemblyTypeName: CharacterSystem.Game.CharacterSystem.CharacterInteraction,
+          CharacterSystem.Game
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b254564b-bfb7-444d-a881-2a0fa348aa58
+    m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 89366d24-22db-4d59-9583-fec661db0200
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2a293516-bd2b-4d7e-b8e8-dc8c08da4cee
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3f951071-f6d0-4757-881f-f1fedd063cbe
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c3832ec-f52a-48e7-b0fc-44623a03db0b
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 13e3d5ed-f2f4-490d-818b-1b6f96fdefb6
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b1ed3e6b-3e0c-427c-9651-d92fba579a16
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f5d3b9c7-a6d1-4a49-8003-ebddfec6e75d
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 81bf8469-1e5d-40c9-8c61-397506e56e84
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 59e593c2-4109-474d-acb4-4f14f53444b1
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a633394c-b95b-465d-a5d7-2e1d1e9d4c84
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2124255714326840635}
+        m_TargetAssemblyTypeName: CharacterInput, CharacterSystem.Game
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b87b8fa2-a04d-48e0-98b7-4b6e7f2af4ad
+    m_ActionName: Player/crouch[/Keyboard/c,/Keyboard/leftCtrl]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 9088305338029668752}
+--- !u!114 &2124255714326840635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704290125392804281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5b5029d479b104f86d4e59a540be2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 7806648217199895896}
@@ -481,7 +680,22 @@ MonoBehaviour:
   minPitch: -80
   crouchedCamera: {fileID: 1392988433417167463}
   unCrouchedCamera: {fileID: 2193921756687511492}
-  lookSensitivity: {x: 1.5, y: 1.25}
+  lookSensitivity: {x: 1, y: 1}
+--- !u!114 &4357029197615512943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704290125392804281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df0292b15b66154a867663bca2635a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 9088305338029668752}
+  interactionRange: 20
+  itemHolder: {fileID: 7509580897421252429}
 --- !u!1 &2193921756687511492
 GameObject:
   m_ObjectHideFlags: 0
