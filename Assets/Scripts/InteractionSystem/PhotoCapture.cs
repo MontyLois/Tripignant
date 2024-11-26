@@ -5,14 +5,15 @@ namespace PhotoSystem
     public class PhotoCapture : MonoBehaviour, IUsable
     {
         //camera from where to take the photo
-        public Camera polaroidCamera;
+        private Camera polaroidCamera;
         //Texture of the photo
-        public RenderTexture renderTexture;
         [SerializeField]
-        public int heighDistance;
+        private RenderTexture renderTexture;
+        [SerializeField]
+        private int heighDistance;
 
-        public Transform cameraPosition;
-        public Transform playercameraPostion;
+        private Transform cameraPosition;
+        private Transform playercameraPostion;
     
         void TakePhoto()
         {
@@ -23,10 +24,8 @@ namespace PhotoSystem
             // Set the camera's target texture and activate it
             polaroidCamera.targetTexture = renderTexture;
             RenderTexture.active = renderTexture;
-
             // Create a new Texture2D with the same dimensions as the Render Texture
             Texture2D texture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
-
             // Render the camera's view
             polaroidCamera.Render();
 
@@ -47,15 +46,10 @@ namespace PhotoSystem
             cameraPosition.SetPositionAndRotation(position, playercameraPostion.rotation);
         }
 
-        // Example: Capture the screen when pressing the "R" key
+        
         void Update()
         {
             move();
-            /*
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                TakePhoto();
-            }*/
         }
 
         public void Use()

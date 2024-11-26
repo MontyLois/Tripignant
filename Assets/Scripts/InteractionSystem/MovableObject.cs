@@ -4,11 +4,12 @@ namespace PhotoSystem
 {
     public class MovableObject : MonoBehaviour, IMovable
     {
-        public float moveSpeed = 50f;
-        public Rigidbody rb;
+        private float moveSpeed = 50f;
+        private Rigidbody rb;
         
         public void Move(Transform playerPosition, float direction)
         {
+            //object position to player position
             Vector3 objectToPlayer = playerPosition.position - transform.position;
             Vector3 moveDirection = Vector3.zero;
             //calculate the relative direction to move the object

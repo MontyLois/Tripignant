@@ -12,9 +12,9 @@ namespace CharacterSystem.Game.CharacterSystem
         private IMovable currentMovableObject;
         
         
-        public Camera playerCamera;
-        public float interactionRange;
-        public Transform itemHolder;
+        private Camera playerCamera;
+        private float interactionRange;
+        private Transform itemHolder;
         
     
         public void OnUseItem(InputAction.CallbackContext context)

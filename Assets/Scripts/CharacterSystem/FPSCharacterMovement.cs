@@ -1,3 +1,4 @@
+using System;
 using ECM2;
 using PhotoSystem;
 using UnityEngine;
@@ -8,33 +9,71 @@ public class CharacterInput : MonoBehaviour
 {
     [Header("Cinemachine")]
     [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow.")]
-    public GameObject cameraTarget;
+    private GameObject cameraTarget;
     [Tooltip("How far in degrees can you move the camera up.")]
-    public float maxPitch = 80.0f;
+    private float maxPitch = 80.0f;
     [Tooltip("How far in degrees can you move the camera down.")]
-    public float minPitch = -80.0f;
+    private float minPitch = -80.0f;
         
     [Space(15.0f)]
     [Tooltip("Cinemachine Virtual Camera positioned at desired crouched height.")]
-    public GameObject crouchedCamera;
+    private GameObject crouchedCamera;
     [Tooltip("Cinemachine Virtual Camera positioned at desired un-crouched height.")]
-    public GameObject unCrouchedCamera;
+    private GameObject unCrouchedCamera;
         
     [Space(15.0f)]
     [Tooltip("Mouse look sensitivity")]
-    public Vector2 lookSensitivity = new Vector2(1.5f, 1.25f);
+    private Vector2 lookSensitivity = new Vector2(1.5f, 1.25f);
 
     // Cached controlled character
         
     private Character _character;
+
+    private PlayerInput _input;
     
     // Current camera target pitch
         
     private float _cameraTargetPitch;
-    
-    
-    
-    
+    private InputAction moveAction;
+
+
+    private void Awake()
+    {
+        //
+        // Cache controlled character.
+        _input = GetComponent<PlayerInput>();
+        _character = GetComponent<Character>();
+    }
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+            
+        // Disable Character's rotation mode, we'll handle it here
+            
+        _character.SetRotationMode(Character.RotationMode.None);
+        moveAction = _input.actions.FindAction("Move");
+    }
+    private void OnEnable()
+    {
+        // Subscribe to Character events
+            
+        _character.Crouched += OnCrouched;
+        _character.UnCrouched += OnUnCrouched;
+    }
+        
+    private void OnDisable()
+    {
+        // Unsubscribe to Character events
+            
+        _character.Crouched -= OnCrouched;
+        _character.UnCrouched -= OnUnCrouched;
+    }
+
+    private void Update()
+    {
+        Move(moveAction.ReadValue<Vector2>());
+    }
+
     /// <summary>
     /// Add input (affecting Yaw).
     /// This is applied to the Character's rotation.
@@ -69,7 +108,7 @@ public class CharacterInput : MonoBehaviour
 
         Vector2 inputMovement = context.ReadValue<Vector2>();
 
-        Move(inputMovement);
+        //Move(inputMovement);
         
     }
 
@@ -123,7 +162,7 @@ public class CharacterInput : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         //read input values
-        Vector2 lookInput = context.ReadValue<Vector2>();
+        Vector2 lookInput = context.ReadValue<Vector2>() * Time.deltaTime;
         
         // Add yaw input, this update character's yaw rotation
 
@@ -156,35 +195,4 @@ public class CharacterInput : MonoBehaviour
     }
     
    
-    
-    private void Awake()
-    {
-        //
-        // Cache controlled character.
-        
-        _character = GetComponent<Character>();
-    }
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-            
-        // Disable Character's rotation mode, we'll handle it here
-            
-        _character.SetRotationMode(Character.RotationMode.None);
-    }
-    private void OnEnable()
-    {
-        // Subscribe to Character events
-            
-        _character.Crouched += OnCrouched;
-        _character.UnCrouched += OnUnCrouched;
-    }
-        
-    private void OnDisable()
-    {
-        // Unsubscribe to Character events
-            
-        _character.Crouched -= OnCrouched;
-        _character.UnCrouched -= OnUnCrouched;
-    }
 }
