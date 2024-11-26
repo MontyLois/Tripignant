@@ -5,14 +5,16 @@ namespace PhotoSystem
     public class PhotoCapture : MonoBehaviour, IUsable
     {
         //camera from where to take the photo
+        [SerializeField]
         private Camera polaroidCamera;
         //Texture of the photo
         [SerializeField]
         private RenderTexture renderTexture;
         [SerializeField]
         private int heighDistance;
-
+        [SerializeField]
         private Transform cameraPosition;
+        [SerializeField]
         private Transform playercameraPostion;
     
         void TakePhoto()

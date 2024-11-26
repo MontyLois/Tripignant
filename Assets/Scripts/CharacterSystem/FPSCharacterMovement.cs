@@ -9,6 +9,7 @@ public class CharacterInput : MonoBehaviour
 {
     [Header("Cinemachine")]
     [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow.")]
+    [SerializeField]
     private GameObject cameraTarget;
     [Tooltip("How far in degrees can you move the camera up.")]
     private float maxPitch = 80.0f;
@@ -17,8 +18,10 @@ public class CharacterInput : MonoBehaviour
         
     [Space(15.0f)]
     [Tooltip("Cinemachine Virtual Camera positioned at desired crouched height.")]
+    [SerializeField]
     private GameObject crouchedCamera;
     [Tooltip("Cinemachine Virtual Camera positioned at desired un-crouched height.")]
+    [SerializeField]
     private GameObject unCrouchedCamera;
         
     [Space(15.0f)]
@@ -26,14 +29,12 @@ public class CharacterInput : MonoBehaviour
     private Vector2 lookSensitivity = new Vector2(1.5f, 1.25f);
 
     // Cached controlled character
-        
     private Character _character;
-
     private PlayerInput _input;
     
     // Current camera target pitch
         
-    private float _cameraTargetPitch;
+    public float _cameraTargetPitch;
     private InputAction moveAction;
 
 

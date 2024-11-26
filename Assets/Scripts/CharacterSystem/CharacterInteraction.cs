@@ -11,9 +11,11 @@ namespace CharacterSystem.Game.CharacterSystem
         private IUsable itemInHand;
         private IMovable currentMovableObject;
         
-        
+        [SerializeField]
         private Camera playerCamera;
+        [SerializeField]
         private float interactionRange;
+        [SerializeField]
         private Transform itemHolder;
         
     

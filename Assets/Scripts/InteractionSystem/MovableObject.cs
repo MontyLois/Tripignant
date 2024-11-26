@@ -4,7 +4,9 @@ namespace PhotoSystem
 {
     public class MovableObject : MonoBehaviour, IMovable
     {
+        [SerializeField]
         private float moveSpeed = 50f;
+        [SerializeField]
         private Rigidbody rb;
         
         public void Move(Transform playerPosition, float direction)
