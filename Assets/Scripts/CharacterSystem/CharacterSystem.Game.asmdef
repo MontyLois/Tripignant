@@ -1,0 +1,19 @@
+{
+    "name": "CharacterSystem.Game",
+    "rootNamespace": "CharacterSystem.Game",
+    "references": [
+        "GUID:6f42ce528ce4a90448281858b0f6cc42",
+        "GUID:659d7efc2734dfe4babc4144eff2294d",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:6b977b5364b8e8e4986b5a037d1d21c5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

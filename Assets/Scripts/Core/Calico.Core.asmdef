@@ -1,10 +1,8 @@
 {
-    "name": "NomDuJeu.Editor",
-    "rootNamespace": "NomDuJeu.Editor",
+    "name": "Calico.Core",
+    "rootNamespace": "Calico.Core",
     "references": [],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
