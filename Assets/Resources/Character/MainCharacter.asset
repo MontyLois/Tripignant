@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MouseXSensitivity>k__BackingField: 400
   <MouseYSensitivity>k__BackingField: 400
-  <playerHeight>k__BackingField: 0
-  <Avatar>k__BackingField: {fileID: 6371020224050777900, guid: 367b068f147e185409b857053ed49a45, type: 3}
+  <playerHeight>k__BackingField: 170
+  <Avatar>k__BackingField: {fileID: 8672570111304216663, guid: 322edca1110e84746b3e2309eb1378e7, type: 3}
