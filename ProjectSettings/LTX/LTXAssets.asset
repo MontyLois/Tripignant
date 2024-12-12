@@ -127,3 +127,7 @@ MonoBehaviour:
         pas qu'il apparaisse dans l'\xE9diteur)"
       fontSize: 15
     path: Assets/Project/Editor/Presets/Player
+  - annotation:
+      annotation: Write a new note...
+      fontSize: 15
+    path: Assets/ProBuilder Data/materialforvestiairepuzzle/juste bougable.mat
