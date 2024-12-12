@@ -15,7 +15,6 @@ namespace PhotoSystem
             Vector3 moveDirection = Vector3.zero;
             
             /*
-            Test(playerPosition);
             //object position to player position
             Vector3 objectToPlayer = playerPosition.position - transform.position;
             //calculate the relative direction to move the object
@@ -58,13 +57,6 @@ namespace PhotoSystem
             
             // Move the object
             rb.AddForce(moveDirection * moveSpeed);
-        }
-
-        public void Test(Transform playerPosition)
-        {
-            float dotproduct = Vector3.Dot(playerPosition.forward, this.transform.forward);
-            float absolute = Math.Abs(dotproduct);
-            Debug.Log(dotproduct);
         }
     }
 }
