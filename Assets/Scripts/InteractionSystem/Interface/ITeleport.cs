@@ -1,7 +1,7 @@
 using UnityEngine;
+using ECM2;
 
-public abstract class ITeleport
+public interface ITeleport
 {
-   private Object teleporter;
-   private Transform destination;
+  void Teleport(Character character);
 }

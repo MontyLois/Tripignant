@@ -45,7 +45,7 @@ namespace CharacterSystem.Game.CharacterSystem
                 if (Physics.Raycast(ray, out hitInfo, interactionRange))
                 {
                     // Check if the object hit has a MovableObject script
-                    IMovable movable = hitInfo.collider.GetComponent<MovableObject>();
+                    IMovable movable = hitInfo.collider.GetComponent<IMovable>();
                     if (movable != null)
                     {
                         Debug.Log("interacting");
@@ -70,7 +70,6 @@ namespace CharacterSystem.Game.CharacterSystem
             {
                 currentMovableObject = null;
             }
-            
         }
 
         private void FixedUpdate()

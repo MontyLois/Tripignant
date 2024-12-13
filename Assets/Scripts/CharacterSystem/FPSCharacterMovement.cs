@@ -73,7 +73,20 @@ public class CharacterInput : MonoBehaviour
     private void Update()
     {
         Move(moveAction.ReadValue<Vector2>());
+        
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject);
+        ITeleport teleporter = other.gameObject.GetComponent<ITeleport>();
+        if (teleporter != null)
+        {
+            Debug.Log(other.gameObject);
+            teleporter.Teleport(_character);
+        }
+    }
+    
 
     /// <summary>
     /// Add input (affecting Yaw).

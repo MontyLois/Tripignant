@@ -1,7 +1,9 @@
 {
     "name": "InterractionSystem.Game",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:659d7efc2734dfe4babc4144eff2294d"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
