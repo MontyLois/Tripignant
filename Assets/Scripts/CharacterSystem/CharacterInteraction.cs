@@ -17,8 +17,10 @@ namespace CharacterSystem.Game.CharacterSystem
         private float interactionRange;
         [SerializeField]
         private Transform itemHolder;
+
+
+        private float movingInput;
         
-    
         public void OnUseItem(InputAction.CallbackContext context)
         {
             itemInHand?.Use();
@@ -58,6 +60,7 @@ namespace CharacterSystem.Game.CharacterSystem
                             hitInfo.transform.SetParent(itemHolder.transform);
                             hitInfo.transform.localPosition= Vector3.zero;
                             hitInfo.transform.localRotation=Quaternion.identity;
+                            
                         }
                         itemInHand = usable;
                     }
@@ -70,11 +73,19 @@ namespace CharacterSystem.Game.CharacterSystem
             
         }
 
+        private void FixedUpdate()
+        {
+            if (currentMovableObject != null)
+            {
+                currentMovableObject.Move(transform,movingInput);
+            }
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
                 if (currentMovableObject != null)
                 {
-                    currentMovableObject.Move(transform,context.ReadValue<Vector2>().y);
+                    movingInput = context.ReadValue<Vector2>().y;
                 }
         }
         

@@ -6,13 +6,16 @@ namespace PhotoSystem
     public class MovableObject : MonoBehaviour, IMovable
     {
         [SerializeField]
-        private float moveSpeed = 50f;
-        [SerializeField]
+        private float moveSpeed = 120f;
         private Rigidbody rb;
-        
+
+        private void Start()
+        {
+            rb = this.GetComponent<Rigidbody>();
+        }
+
         public void Move(Transform playerPosition, float direction)
         {
-            Vector3 moveDirection = Vector3.zero;
             
             /*
             //object position to player position
@@ -32,31 +35,30 @@ namespace PhotoSystem
             
             */
             
-            
             //let's try something new
             
-            //we are calculating the dot product between the player forward and the object forward 
-            //to determin on wich axis we should move the object
-            float dotproduct = Vector3.Dot(playerPosition.forward, this.transform.forward);
-            float absolute = Math.Abs(dotproduct);
-            //if it's under 0.5, then the player is align with the z axis of the object
-            if (absolute < 0.5)
-            {
-                moveDirection = this.transform.right*-1;
-            }
-            //if it's more than 0.5, then the player is align with the x axis of the object
-            else
-            {
-                moveDirection = this.transform.forward;
-            }
 
-            //direction : if we are pulling (-1) or pushin (1)
-            //dotproduct : neg if we are in front or on the righe, pos if we are behind or on the left.
-            moveDirection = moveDirection * direction * dotproduct;
-            moveDirection = moveDirection.normalized;
+            Vector3 playerForward = playerPosition.forward;
             
+            //calculating dot product of the player and the right and forward vector of the object
+            float rightDot = Vector3.Dot(playerForward, this.transform.right);
+            float forwardDot = Vector3.Dot(playerForward, this.transform.forward);
+            
+            //comparing the dot product to determine on which axis of the object the player is aligned
+            var isRight = Mathf.Abs(rightDot) > Mathf.Abs(forwardDot);
+            Vector3 axis = isRight ? transform.right : transform.forward;
+
+            //direction : if we are pulling (-1) if we are pushing (1)
+            //dotproduct : neg if we are in front or on the right, pos if we are behind or on the left.
+            Vector3 moveDirection = axis * (direction * Mathf.Sign(isRight ? rightDot : forwardDot));
+            //normalized to ensure a constante movespeed.
+            moveDirection = moveDirection.normalized;
+            /*
+            Debug.DrawRay(playerPosition.position, playerPosition.forward * 50, Color.cyan);
+            Debug.DrawRay(transform.position, moveDirection.normalized * 100, isRight ? Color.red : Color.blue);
+            */
             // Move the object
-            rb.AddForce(moveDirection * moveSpeed);
+            rb.AddForce(moveDirection * (moveSpeed * Time.fixedDeltaTime), ForceMode.VelocityChange);
         }
     }
 }
