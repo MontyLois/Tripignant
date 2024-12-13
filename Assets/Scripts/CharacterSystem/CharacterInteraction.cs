@@ -17,8 +17,10 @@ namespace CharacterSystem.Game.CharacterSystem
         private float interactionRange;
         [SerializeField]
         private Transform itemHolder;
+
+
+        private float movingInput;
         
-    
         public void OnUseItem(InputAction.CallbackContext context)
         {
             itemInHand?.Use();
@@ -43,7 +45,7 @@ namespace CharacterSystem.Game.CharacterSystem
                 if (Physics.Raycast(ray, out hitInfo, interactionRange))
                 {
                     // Check if the object hit has a MovableObject script
-                    IMovable movable = hitInfo.collider.GetComponent<MovableObject>();
+                    IMovable movable = hitInfo.collider.GetComponent<IMovable>();
                     if (movable != null)
                     {
                         Debug.Log("interacting");
@@ -58,6 +60,7 @@ namespace CharacterSystem.Game.CharacterSystem
                             hitInfo.transform.SetParent(itemHolder.transform);
                             hitInfo.transform.localPosition= Vector3.zero;
                             hitInfo.transform.localRotation=Quaternion.identity;
+                            
                         }
                         itemInHand = usable;
                     }
@@ -67,14 +70,21 @@ namespace CharacterSystem.Game.CharacterSystem
             {
                 currentMovableObject = null;
             }
-            
+        }
+
+        private void FixedUpdate()
+        {
+            if (currentMovableObject != null)
+            {
+                currentMovableObject.Move(transform,movingInput);
+            }
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
                 if (currentMovableObject != null)
                 {
-                    currentMovableObject.Move(transform,context.ReadValue<Vector2>().y);
+                    movingInput = context.ReadValue<Vector2>().y;
                 }
         }
         

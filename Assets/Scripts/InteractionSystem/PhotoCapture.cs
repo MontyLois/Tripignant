@@ -10,10 +10,14 @@ namespace PhotoSystem
         //Texture of the photo
         [SerializeField]
         private RenderTexture renderTexture;
+       //distance between present and past
         [SerializeField]
         private int heighDistance;
+        
+        //camera of the past position
         [SerializeField]
         private Transform cameraPosition;
+        //camera of the player
         [SerializeField]
         private Transform playercameraPostion;
     
