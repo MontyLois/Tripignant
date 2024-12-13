@@ -42,7 +42,7 @@ namespace PhotoSystem
             //if it's under 0.5, then the player is align with the z axis of the object
             if (absolute < 0.5)
             {
-                moveDirection = this.transform.right;
+                moveDirection = this.transform.right*-1;
             }
             //if it's more than 0.5, then the player is align with the x axis of the object
             else
