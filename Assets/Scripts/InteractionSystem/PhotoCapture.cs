@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PhotoSystem
 {
@@ -20,6 +21,8 @@ namespace PhotoSystem
         //camera of the player
         [SerializeField]
         private Transform playercameraPostion;
+
+        [SerializeField] private GameObject photo;
     
         void TakePhoto()
         {
@@ -43,6 +46,9 @@ namespace PhotoSystem
             RenderTexture.active = currentRT;
             polaroidCamera.targetTexture = null;
         
+            
+            //set active the image in the ui
+            photo.SetActive(true);
         }
 
         private void move()
