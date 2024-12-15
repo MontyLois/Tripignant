@@ -26,6 +26,7 @@ public class CharacterInput : MonoBehaviour
         
     [Space(15.0f)]
     [Tooltip("Mouse look sensitivity")]
+    [SerializeField]
     private Vector2 lookSensitivity = new Vector2(1.5f, 1.25f);
 
     // Cached controlled character
@@ -37,10 +38,11 @@ public class CharacterInput : MonoBehaviour
     public float _cameraTargetPitch;
     private InputAction moveAction;
 
+    private bool take_Input;
+
 
     private void Awake()
     {
-        //
         // Cache controlled character.
         _input = GetComponent<PlayerInput>();
         _character = GetComponent<Character>();
@@ -53,6 +55,7 @@ public class CharacterInput : MonoBehaviour
             
         _character.SetRotationMode(Character.RotationMode.None);
         moveAction = _input.actions.FindAction("Move");
+        take_Input = true;
     }
     private void OnEnable()
     {
@@ -72,8 +75,7 @@ public class CharacterInput : MonoBehaviour
 
     private void Update()
     {
-        Move(moveAction.ReadValue<Vector2>());
-        
+       Move(moveAction.ReadValue<Vector2>()); 
     }
     
     private void OnTriggerEnter(Collider other)
@@ -132,20 +134,23 @@ public class CharacterInput : MonoBehaviour
 
         Vector3 movementDirection = Vector3.zero;
 
-        movementDirection += Vector3.forward * direction.y;
-        movementDirection += Vector3.right * direction.x;
+        if (take_Input)
+        {
+            movementDirection += Vector3.forward * direction.y;
+            movementDirection += Vector3.right * direction.x;
 
-        // If character has a camera assigned,
-        // make movement direction relative to this camera view direction
+            // If character has a camera assigned,
+            // make movement direction relative to this camera view direction
 
-        if (_character.camera)
-        {               
-            movementDirection 
-                = movementDirection.relativeTo(_character.cameraTransform);
+            if (_character.camera)
+            {               
+                movementDirection 
+                    = movementDirection.relativeTo(_character.cameraTransform);
+            }
         }
+        
     
         // Set character's movement direction vector
-
         _character.SetMovementDirection(movementDirection);
     }
 
@@ -208,5 +213,13 @@ public class CharacterInput : MonoBehaviour
         unCrouchedCamera.SetActive(true);
     }
     
-   
+    public void LockCharacter()
+    {
+        take_Input = false;
+    }
+
+    public void UnlockCharacter()
+    {
+        take_Input = true;
+    }
 }

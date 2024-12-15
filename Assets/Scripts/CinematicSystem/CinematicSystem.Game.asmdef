@@ -1,9 +1,7 @@
 {
-    "name": "InterractionSystem.Game",
-    "rootNamespace": "InterractionSystem.Game",
-    "references": [
-        "GUID:659d7efc2734dfe4babc4144eff2294d"
-    ],
+    "name": "CinematicSystem.Game",
+    "rootNamespace": "CinematicSystem.Game",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -20,20 +20,33 @@ namespace CharacterSystem.Game.CharacterSystem
 
 
         private float movingInput;
+        private bool take_input;
+
+        private void Start()
+        {
+            take_input = true;
+        }
         
+        private void FixedUpdate()
+        {
+            if (currentMovableObject != null)
+            {
+                currentMovableObject.Move(transform,movingInput);
+            }
+        }
+
         public void OnUseItem(InputAction.CallbackContext context)
         {
-            itemInHand?.Use();
-            if (itemInHand != null)
+            if (take_input)
             {
-                Debug.Log("interacting");
+                itemInHand?.Use();
             }
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
             
-            if (context.started)
+            if (context.started&&take_input)
             {
                 Ray ray = new Ray
                 {
@@ -57,6 +70,7 @@ namespace CharacterSystem.Game.CharacterSystem
                         Debug.Log("pickingupitem");
                         if (itemInHand == null)
                         {
+                            hitInfo.collider.enabled = false;
                             hitInfo.transform.SetParent(itemHolder.transform);
                             hitInfo.transform.localPosition= Vector3.zero;
                             hitInfo.transform.localRotation=Quaternion.identity;
@@ -72,22 +86,26 @@ namespace CharacterSystem.Game.CharacterSystem
             }
         }
 
-        private void FixedUpdate()
-        {
-            if (currentMovableObject != null)
-            {
-                currentMovableObject.Move(transform,movingInput);
-            }
-        }
+       
 
         public void OnMove(InputAction.CallbackContext context)
         {
-                if (currentMovableObject != null)
+                if (currentMovableObject != null&& take_input)
                 {
                     movingInput = context.ReadValue<Vector2>().y;
                 }
         }
         
+
+        public void LockCharacter()
+        {
+            take_input = false;
+        }
+
+        public void UnlockCharacter()
+        {
+            take_input = true;
+        }
     }
 }
 
