@@ -131,3 +131,7 @@ MonoBehaviour:
       annotation: Write a new note...
       fontSize: 15
     path: Assets/ProBuilder Data/materialforvestiairepuzzle/juste bougable.mat
+  - annotation:
+      annotation: Write a new note...
+      fontSize: 15
+    path: Assets/Project/Meshes/FBX DES GA/Table vestiaire.fbx
