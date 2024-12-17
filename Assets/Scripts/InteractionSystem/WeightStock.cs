@@ -21,7 +21,7 @@ namespace InterractionSystem.Game
             if (collider)
             {
                 collider.enabled = true;
-                gap = collider.bounds.size.x;
+                gap = collider.bounds.size.y;
             }
             float nbchild = this.transform.childCount;
             float position_x = gap * (nbchild-1)+ (float)0.05 *(nbchild-1);
