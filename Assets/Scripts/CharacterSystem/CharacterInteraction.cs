@@ -96,7 +96,10 @@ namespace CharacterSystem.Game.CharacterSystem
                         else
                         {
                             weight = stackable.RemoveWeight();
+                            weight.GetComponent<Collider>().enabled = false;
                             weight.transform.SetParent(secondItemHolder);
+                            weight.transform.localPosition = Vector3.zero;
+                            
                         }
                     }
                 }

@@ -20,18 +20,22 @@ namespace InterractionSystem.Game
            //set new parent
            weight.transform.SetParent(this.transform);
            
+           //reset position and rotation
+           weight.transform.localPosition = Vector3.zero;
+           weight.transform.localRotation = Quaternion.identity;
+           
            //stack the child on top of the others.
            float gap = 0;
            Collider collider = weight.GetComponent<Collider>();
            if (collider)
            {
+               collider.enabled = true;
                gap = collider.bounds.size.y;
            }
            float nbchild = this.transform.childCount;
-           float position_y = gap * (nbchild-1);
+           float position_y = gap * (nbchild-1)+(float)0.05 *(nbchild-1);
            Vector3 position = new Vector3(0,position_y,0);
            weight.transform.localPosition = position;
-           weight.transform.localRotation = Quaternion.identity;
            
            //add weight to the pulley and move the stage set
            nb_weight++;
