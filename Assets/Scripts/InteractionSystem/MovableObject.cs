@@ -5,8 +5,8 @@ namespace PhotoSystem
 {
     public class MovableObject : MonoBehaviour, IMovable
     {
-        [SerializeField]
-        private float moveSpeed = 60f;
+        //[SerializeField]
+        private float moveSpeed = 30f;
         private Rigidbody rb;
 
         private void Start()
