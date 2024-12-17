@@ -43,9 +43,13 @@ namespace CharacterSystem.Game.CharacterSystem
 
         public void OnUseItem(InputAction.CallbackContext context)
         {
-            if (take_input)
+            if (context.phase == InputActionPhase.Performed)
             {
-                itemInHand?.Use();
+                if (take_input)
+                {
+                    itemInHand?.Use();
+                }
+                
             }
         }
 
