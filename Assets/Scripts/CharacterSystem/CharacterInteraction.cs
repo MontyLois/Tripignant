@@ -22,6 +22,8 @@ namespace CharacterSystem.Game.CharacterSystem
         [SerializeField]
         private Transform secondItemHolder;
 
+        
+
 
         private float movingInput;
         private bool take_input;
@@ -86,7 +88,6 @@ namespace CharacterSystem.Game.CharacterSystem
                     IStackable stackable = hitInfo.collider.GetComponent<IStackable>();
                     if (stackable!=null)
                     {
-                        Debug.Log("we are stacking baby");
                         if (weight != null)
                         {
                             stackable.AddWeight(weight);
@@ -126,6 +127,8 @@ namespace CharacterSystem.Game.CharacterSystem
         {
             take_input = true;
         }
+
+        
     }
 }
 

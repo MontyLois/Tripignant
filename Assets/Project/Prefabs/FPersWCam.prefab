@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150741674323895644}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6499996, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -690,6 +690,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b87b8fa2-a04d-48e0-98b7-4b6e7f2af4ad
     m_ActionName: Player/crouch[/Keyboard/c,/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2124255714326840635}
+        m_TargetAssemblyTypeName: CharacterInput, CharacterSystem.Game
+        m_MethodName: OnTeleport
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c52ed7a2-7375-458c-b99b-0b7d6fdf45bd
+    m_ActionName: Player/Teleport[/Keyboard/1,/Keyboard/numpad1]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -710,8 +726,9 @@ MonoBehaviour:
   cameraTarget: {fileID: 7806648217199895896}
   crouchedCamera: {fileID: 1392988433417167463}
   unCrouchedCamera: {fileID: 2193921756687511492}
-  lookSensitivity: {x: 1.5, y: 1.25}
+  lookSensitivity: {x: 2, y: 1.25}
   _cameraTargetPitch: 0
+  destination: {fileID: 0}
 --- !u!114 &4357029197615512943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +771,7 @@ Transform:
   m_GameObject: {fileID: 2193921756687511492}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalPosition: {x: 0, y: 2.335001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -894,7 +911,7 @@ Transform:
   m_GameObject: {fileID: 7806648217199895896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalPosition: {x: 0, y: 2.335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

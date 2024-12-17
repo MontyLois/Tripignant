@@ -63,12 +63,12 @@ namespace InterractionSystem.Game
            }
            //calculate the height
            height = ratio * height_max;
-           Debug.Log("ratio :"+ ratio+" heigth :"+ height);
            //set new height
            if (stageSet)
            {
-               Vector3 position = new Vector3(stageSet.position.x, height, stageSet.position.z);
-               stageSet.SetPositionAndRotation(position, stageSet.rotation);
+               
+               Vector3 position = new Vector3(stageSet.localPosition.x, height, stageSet.localPosition.z);
+               stageSet.localPosition = position;
            }
        }
     }

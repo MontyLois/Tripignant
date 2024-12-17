@@ -39,6 +39,10 @@ public class CharacterInput : MonoBehaviour
     private InputAction moveAction;
 
     private bool take_Input;
+    
+    //for teleportation
+    [SerializeField] 
+    private Transform destination;
 
 
     private void Awake()
@@ -211,6 +215,12 @@ public class CharacterInput : MonoBehaviour
     {
         crouchedCamera.SetActive(false);
         unCrouchedCamera.SetActive(true);
+    }
+    
+    public void OnTeleport(InputAction.CallbackContext context)
+    {
+        _character.SetPosition(destination.position);
+        _character.SetRotation(destination.rotation);
     }
     
     public void LockCharacter()

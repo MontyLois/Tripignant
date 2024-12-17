@@ -12,6 +12,5 @@ public class Teleporter : MonoBehaviour, ITeleport
     {
         playerTransform.SetPosition(destination.position);
         playerTransform.SetRotation(destination.rotation);
-        Debug.Log("aaaaaaaaaaaah teleportationnnnn");
     }
 }
