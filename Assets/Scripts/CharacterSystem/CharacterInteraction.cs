@@ -1,4 +1,5 @@
 using System;
+using InterractionSystem.Game;
 using PhotoSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,7 @@ namespace CharacterSystem.Game.CharacterSystem
         // Reference to the item in the player's hand
         private IUsable itemInHand;
         private IMovable currentMovableObject;
+        private GameObject weight;
         
         [SerializeField]
         private Camera playerCamera;
@@ -17,6 +19,10 @@ namespace CharacterSystem.Game.CharacterSystem
         private float interactionRange;
         [SerializeField]
         private Transform itemHolder;
+        [SerializeField]
+        private Transform secondItemHolder;
+
+        
 
 
         private float movingInput;
@@ -78,6 +84,21 @@ namespace CharacterSystem.Game.CharacterSystem
                         }
                         itemInHand = usable;
                     }
+
+                    IStackable stackable = hitInfo.collider.GetComponent<IStackable>();
+                    if (stackable!=null)
+                    {
+                        if (weight != null)
+                        {
+                            stackable.AddWeight(weight);
+                            weight = null;
+                        }
+                        else
+                        {
+                            weight = stackable.RemoveWeight();
+                            weight.transform.SetParent(secondItemHolder);
+                        }
+                    }
                 }
             }
             else if (context.canceled)
@@ -106,6 +127,8 @@ namespace CharacterSystem.Game.CharacterSystem
         {
             take_input = true;
         }
+
+        
     }
 }
 

@@ -28,12 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150741674323895644}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6499996, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7509580897421252429}
+  - {fileID: 1789198241009569844}
   m_Father: {fileID: 4558596585409819013}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!20 &9088305338029668752
@@ -144,6 +145,37 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &429442776752598508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1789198241009569844}
+  m_Layer: 0
+  m_Name: SecondhandPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1789198241009569844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429442776752598508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.369, y: -0.463, z: 0.753}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3031159063411949253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &763277521255296184
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 1, y: -0.65, z: 0}
+  ShoulderOffset: {x: 1, y: -1.25, z: 0}
   VerticalArmLength: 0
   CameraSide: 0.5
   CameraDistance: 0
@@ -658,6 +690,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b87b8fa2-a04d-48e0-98b7-4b6e7f2af4ad
     m_ActionName: Player/crouch[/Keyboard/c,/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2124255714326840635}
+        m_TargetAssemblyTypeName: CharacterInput, CharacterSystem.Game
+        m_MethodName: OnTeleport
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c52ed7a2-7375-458c-b99b-0b7d6fdf45bd
+    m_ActionName: Player/Teleport[/Keyboard/1,/Keyboard/numpad1]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -678,7 +726,9 @@ MonoBehaviour:
   cameraTarget: {fileID: 7806648217199895896}
   crouchedCamera: {fileID: 1392988433417167463}
   unCrouchedCamera: {fileID: 2193921756687511492}
+  lookSensitivity: {x: 2, y: 1.25}
   _cameraTargetPitch: 0
+  destination: {fileID: 0}
 --- !u!114 &4357029197615512943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +744,7 @@ MonoBehaviour:
   playerCamera: {fileID: 9088305338029668752}
   interactionRange: 20
   itemHolder: {fileID: 7509580897421252429}
+  secondItemHolder: {fileID: 1789198241009569844}
 --- !u!1 &2193921756687511492
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +771,7 @@ Transform:
   m_GameObject: {fileID: 2193921756687511492}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalPosition: {x: 0, y: 2.335001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -860,7 +911,7 @@ Transform:
   m_GameObject: {fileID: 7806648217199895896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalPosition: {x: 0, y: 2.335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
